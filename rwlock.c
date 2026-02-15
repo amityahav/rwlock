@@ -15,7 +15,7 @@ void rwlock_init(struct rwlock *rw)
 	spin_init(&rw->guard);
 	q_init(&rw->wait_q);
 	rw->active_readers = 0;
-	rw->writer_active = 0;
+	rw->writer_active = false;
 }
 
 void rwlock_acquire_read(struct rwlock *rw)
