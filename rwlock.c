@@ -91,7 +91,8 @@ void rwlock_release_write(struct rwlock *rw)
 	// 1) q: [W, R, R] -> grant lock for write, q: [R, R]
 	// 2) q: [R, R] -> grant lock for all readers, q: []
 	// 3) q: [R, R, W, R] -> grant lock for the first batch of readers, q: [W, R]
-	// 4) q: [] -> lock is kept released
+	// 4) q: [W, W] -> grant lock for the first writer, q: [W]
+	// 5) q: [] -> lock is kept released
 	bool is_batch = false;
 	while(!q_is_empty(&rw->wait_q)) {
 		struct entry* e = q_peek(&rw->wait_q);
