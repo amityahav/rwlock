@@ -50,9 +50,3 @@ bool q_is_empty(const struct queue *q)
 {
 	return q->head == NULL;
 }
-
-void q_clear(struct queue *q)
-{
-	while (q_pop(q) != NULL)
-		;
-}
