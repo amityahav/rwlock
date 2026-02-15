@@ -125,9 +125,8 @@ void rwlock_release_write(struct rwlock *rw)
 
 static struct entry *entry_create(bool is_writer)
 {
+	// lets assume for simplicity that malloc does not fail
 	struct entry *e = malloc(sizeof(*e));
-	if (!e)
-		return NULL;
 	e->is_writer = is_writer;
 	pthread_mutex_init(&e->mutex, NULL);
 	pthread_cond_init(&e->cond, NULL);
