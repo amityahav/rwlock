@@ -7,12 +7,6 @@
 #include <stddef.h>
 #include <pthread.h>
 
-typedef struct entry {
-	bool            is_writer;
-	pthread_mutex_t  mutex;
-	pthread_cond_t   cond;
-} etnry;
-
 struct rwlock {
 	struct spinlock  guard;
 	struct queue     wait_q;
