@@ -5,14 +5,12 @@
 #include "spinlock.h"
 #include <stdbool.h>
 #include <stddef.h>
-#include <stdint.h>
 #include <pthread.h>
 
 typedef struct entry {
-	bool           is_writer;
-	uintptr_t      thread_id;
-	pthread_mutex_t mutex;
-	pthread_cond_t  cond;
+	bool            is_writer;
+	pthread_mutex_t  mutex;
+	pthread_cond_t   cond;
 } etnry;
 
 struct rwlock {

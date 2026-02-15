@@ -129,7 +129,6 @@ static struct entry *entry_create(bool is_writer)
 	if (!e)
 		return NULL;
 	e->is_writer = is_writer;
-	e->thread_id = (uintptr_t)pthread_self();
 	pthread_mutex_init(&e->mutex, NULL);
 	pthread_cond_init(&e->cond, NULL);
 	return e;
